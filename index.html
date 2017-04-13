@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular Starter Table and Search</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Angular cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<!-- the body will have angular applied to it -->
+<body ng-app="myApp">
+
+    <!-- controller only applies to this section -->
+    <section ng-controller="myCtrl">
+    <!-- replace name by controller in js file
+    <h1>{{name.first | uppercase}}</h1>
+        {{5 | currency}} -->
+
+        <!-- shows what we are searching for -->
+        <pre>{{search}}</pre>
+        <input type ="text" ng-model="search.volumeInfo.title">
+
+        <table class = "table table-striped table-bordered table-condensed">
+            <!-- table header -->
+            <thead>
+                <!-- table rows -->
+                <tr>
+                <!-- table header 3-->
+                <th>Title</th>
+                <th>Country</th>
+                <th>Buy Link</th>
+                <tr>
+            </thead>
+            <!-- table body -->
+            <tbody>
+                <!-- table row repeating (x) times the row for data in this case books-->
+                <tr ng-repeat="x in books | filter:search">
+                    <!-- table data 3-->
+                    <td>{{x.volumeInfo.title}}</td>
+                    <td>{{x.saleInfo.country}}</td>
+                    <td><a ng-href="{{x.saleInfo.buyLink}}">Buy Now</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
